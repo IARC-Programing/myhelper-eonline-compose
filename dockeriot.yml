@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  site1:
+    container_name: eiot-renita
+    image: iarc/eiotsoft:renita
+    depends_on:
+      - mongo1
+    environment:
+      PORT: 7000
+      MONGO_DB_URI: mongodb://mongo1/eiot-renita
+    links:
+      - mongo1
+    ports:
+      - 6001:7000
+
+
+  mongo1:
+    image: mongo
+    container_name: mongo1
+    restart: always
+    volumes:
+      - ./data:/data/db
+    ports:
+      - 27017:27017
