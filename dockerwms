@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  wms:
+    container_name: SeaseekerWMS
+    image: iarc/wms:latest
+    environment:
+      DB_HOST: "localhost"
+      DB_USER: "root"
+      DB_PASSWORD: ""
+      DB_NAME: "seaseeker_db"
+      LINE_CLIENT_ID: ""
+      LINE_CLIENT_SECRET: ""
+      LINE_REDIRECT_URL: "http://localhost:3000/wms/dashboard/notify"
+    ports:
+      - 8801:9900
